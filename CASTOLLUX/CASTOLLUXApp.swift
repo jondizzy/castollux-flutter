@@ -25,7 +25,7 @@ struct CASTOLLUXApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PersonaSummaryView()
         }
         .modelContainer(sharedModelContainer)
     }
