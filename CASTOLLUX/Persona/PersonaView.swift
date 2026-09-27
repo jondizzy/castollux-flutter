@@ -31,29 +31,104 @@ struct PersonaView: View {
                 Form {
                     Section("Identity") {
                         TextField("This is...", text: $name)
+                            //regulates no auto correction, and no auto capitalization
+                            .autocorrectionDisabled(true)
+                            .textInputAutocapitalization(.never)
                     } //name section
                     
                     Section("Personality") {
-                        Picker("What would his energy type be?", selection: $personality) {
-                            ForEach(personalityOptions, id: \.self) { o in Text(o)} //o is a standalone variable for  one option
+                        Menu {
+                            ForEach(personalityOptions, id: \.self) { option in
+                                Button(option) {
+                                    personality = option
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(
+                                    personality.isEmpty
+                                        ? "What would his energy type be?"
+                                        : personality
+                                )
+                                .foregroundStyle(.primary)
+
+                                Spacer()
+
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     } //personality section
                     
                     Section("Moral Alignment") {
-                        Picker("What would his moral compass be?", selection: $moralAlignment) {
-                            ForEach(moralOptions, id: \.self) {o in Text (o)}
+                        Menu {
+                            ForEach(moralOptions, id: \.self) { option in
+                                Button(option) {
+                                    moralAlignment = option
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(
+                                    moralAlignment.isEmpty
+                                        ? "What would his moral compass be?"
+                                        : moralAlignment
+                                )
+                                .foregroundStyle(.primary)
+
+                                Spacer()
+
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     } //moral section
                     
                     Section("Purpose") {
-                        Picker("What would his purpose or dream?", selection: $purpose) {
-                            ForEach(purposeOptions, id: \.self) {o in Text (o)}
+                        Menu {
+                            ForEach(purposeOptions, id: \.self) { option in
+                                Button(option) {
+                                    purpose = option
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(
+                                    purpose.isEmpty
+                                        ? "What would his purpose or dream be?"
+                                        : purpose
+                                )
+                                .foregroundStyle(.primary)
+
+                                Spacer()
+
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     } //purpose section
                     
                     Section("Speech Style") {
-                        Picker("What would his speech style be?", selection: $speechStyle) {
-                            ForEach(speechOptions, id: \.self) {o in Text (o)}
+                        Menu {
+                            ForEach(speechOptions, id: \.self) { option in
+                                Button(option) {
+                                    speechStyle = option
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(
+                                    speechStyle.isEmpty
+                                        ? "What would his speech style be?"
+                                        : speechStyle
+                                )
+                                .foregroundStyle(.primary)
+
+                                Spacer()
+
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     } //speech section
                     

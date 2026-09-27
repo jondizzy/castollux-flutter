@@ -33,6 +33,19 @@ struct PersonaDetailView: View {
                     value: persona.speechStyle
                 )
             }
+            
+            Section("Info") {
+                LabeledContent {
+                    Text(persona.createdAt,
+                         format: .dateTime
+                        .day()
+                        .month(.wide)
+                        .year()
+                    )
+                } label: {
+                    Text("Created")
+                }
+            }
         } //form
         .navigationTitle(persona.name)
     } //body

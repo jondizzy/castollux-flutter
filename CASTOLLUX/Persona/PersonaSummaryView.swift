@@ -6,28 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PersonaSummaryView: View {
+    @Environment(\.modelContext) private var modelContext
+    
+    @Query(sort: \Persona.createdAt) private var personas: [Persona]
+    
     @State private var showingCreaetePersona = false
-    
-    
-    @State private var	 personas: [Persona] = [
-        //sample personas are hardcoded here
-        Persona(
-            name: "Golliath",
-            personality: "pessimistic",
-            moralAlignment: "neutral-evil",
-            purpose: "personal-gain",
-            speechStyle: "narcissist"
-        ),
-        Persona(
-            name: "Gaelid",
-            personality: "friendly",
-            moralAlignment: "chaotic-good",
-            purpose: "peace-and-love",
-            speechStyle: "hopeful"
-        )
-    ]
     
     var body: some View {
         NavigationStack {
@@ -50,7 +36,7 @@ struct PersonaSummaryView: View {
             }
             .sheet(isPresented: $showingCreaetePersona) {
                 PersonaView { newPersona in //call newPersona
-                    personas.append(newPersona) //add new persona to array
+                    modelContext.insert(newPersona) //add new persona to array
                     showingCreaetePersona = false
                 }
             }
