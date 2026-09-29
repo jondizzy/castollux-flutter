@@ -60,12 +60,7 @@ class Persona {
 }
 
 abstract final class PersonaOptions {
-  static const personalities = [
-    'pessimistic',
-    'friendly',
-    'pragmatic',
-    'numb',
-  ];
+  static const personalities = ['pessimistic', 'friendly', 'pragmatic', 'numb'];
 
   static const moralAlignments = [
     'neutral-evil',
@@ -81,10 +76,5 @@ abstract final class PersonaOptions {
     'clarity',
   ];
 
-  static const speechStyles = [
-    'narcissist',
-    'hopeful',
-    'gentle',
-    'direct',
-  ];
+  static const speechStyles = ['narcissist', 'hopeful', 'gentle', 'direct'];
 }

@@ -46,9 +46,8 @@ class PersonaListScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 'Personas',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.headlineLarge
+                    ?.copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 24),
               for (final persona in personas)
@@ -86,9 +85,8 @@ class _PersonaRow extends StatelessWidget {
           onTap: onTap,
           title: Text(
             persona.name,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(context).textTheme.titleLarge
+                ?.copyWith(fontWeight: FontWeight.w600),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 5),

@@ -40,9 +40,8 @@ class PersonaDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final date = MaterialLocalizations.of(context).formatMediumDate(
-      persona.createdAt,
-    );
+    final date = MaterialLocalizations.of(context)
+        .formatMediumDate(persona.createdAt);
 
     return Scaffold(
       appBar: AppBar(
@@ -113,9 +112,8 @@ class _TraitRow extends StatelessWidget {
           Expanded(
             child: Text(
               value,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge
+                  ?.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
         ],
