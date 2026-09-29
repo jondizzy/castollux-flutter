@@ -13,19 +13,19 @@ class HomeBar extends StatelessWidget {
       onDestinationSelected: onTap,
       destinations: const [
         NavigationDestination(
+          icon: Icon(Icons.chat_bubble_outlined),
+          label: 'Chat', //index 0
+          selectedIcon: Icon(Icons.chat_bubble),
+        ),
+        NavigationDestination(
           icon: Icon(Icons.home_outlined),
-          label: 'Home', //index 0
+          label: 'Home', //index 1
           selectedIcon: Icon(Icons.home),
         ),
         NavigationDestination(
           icon: Icon(Icons.people_outlined),
-          label: 'Personas', //index 1
+          label: 'The Selves', //index 2
           selectedIcon: Icon(Icons.people),
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.chat_bubble_outlined),
-          label: 'Chat', //index 2
-          selectedIcon: Icon(Icons.chat_bubble),
         ),
       ],
     );

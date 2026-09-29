@@ -45,7 +45,7 @@ class PersonaListScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Personas',
+                'The Selves',
                 style: Theme.of(context).textTheme.headlineLarge
                     ?.copyWith(fontWeight: FontWeight.w700),
               ),

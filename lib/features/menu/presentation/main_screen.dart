@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'homebar.dart';
 import '../../personas/presentation/persona_list_screen.dart';
 import '../../personas/data/persona_store.dart';
+import '../../home/presentation/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.personaStore});
@@ -35,11 +36,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget _buildCurrentScreen() {
     switch (currentIndex) {
       case 0:
-        return const Center(child: Text('Home'));
-      case 1:
-        return PersonaListScreen(personaStore: widget.personaStore);
-      case 2:
         return const Center(child: Text('Chat'));
+      case 1:
+        return const HomeScreen();
+      case 2:
+        return PersonaListScreen(personaStore: widget.personaStore);
       default:
         return const SizedBox.shrink();
     }
