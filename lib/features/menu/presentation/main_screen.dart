@@ -38,7 +38,10 @@ class _MainScreenState extends State<MainScreen> {
       case 0:
         return const Center(child: Text('Chat'));
       case 1:
-        return const HomeScreen();
+        return HomeScreen(
+          personaStore:
+              widget.personaStore, // Pass the PersonaStore instance here
+        );
       case 2:
         return PersonaListScreen(personaStore: widget.personaStore);
       default:

@@ -24,7 +24,7 @@ class HomeBar extends StatelessWidget {
         ),
         NavigationDestination(
           icon: Icon(Icons.people_outlined),
-          label: 'The Selves', //index 2
+          label: 'Councils', //index 2
           selectedIcon: Icon(Icons.people),
         ),
       ],

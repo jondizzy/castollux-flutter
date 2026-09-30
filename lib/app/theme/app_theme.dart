@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract final class AppTheme {
   static const _ink = Color(0xFF202621);
@@ -19,7 +20,7 @@ abstract final class AppTheme {
       useMaterial3: true,
       colorScheme: scheme,
       scaffoldBackgroundColor: _paper,
-      fontFamily: 'Georgia',
+      fontFamily: GoogleFonts.rubik().fontFamily,
       appBarTheme: const AppBarTheme(
         backgroundColor: _paper,
         foregroundColor: _ink,
@@ -27,7 +28,7 @@ abstract final class AppTheme {
         centerTitle: false,
         titleTextStyle: TextStyle(
           color: _ink,
-          fontFamily: 'Georgia',
+          fontFamily: 'Rubik',
           fontSize: 22,
           fontWeight: FontWeight.w700,
         ),
