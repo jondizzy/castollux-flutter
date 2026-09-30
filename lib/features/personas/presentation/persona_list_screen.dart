@@ -4,6 +4,7 @@ import '../data/persona_store.dart';
 import '../models/persona.dart';
 import 'persona_detail_screen.dart';
 import 'persona_form_screen.dart';
+import '../widgets/persona_avatar.dart';
 
 class PersonaListScreen extends StatelessWidget {
   const PersonaListScreen({super.key, required this.personaStore});
@@ -81,6 +82,7 @@ class _PersonaRow extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          leading: PersonaAvatar(config: persona.avatar, size: 44),
           contentPadding: const EdgeInsets.symmetric(vertical: 8),
           onTap: onTap,
           title: Text(

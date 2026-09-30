@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../personas/data/persona_store.dart';
 import '../../personas/models/persona.dart';
 import '../../personas/presentation/persona_detail_screen.dart';
+import '../../personas/widgets/persona_avatar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.personaStore});
@@ -139,7 +140,7 @@ class _PersonaCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Spacer(),
-
+              PersonaAvatar(config: persona.avatar, size: 64),
               Text(
                 persona.name,
                 style: Theme.of(context).textTheme.titleMedium,

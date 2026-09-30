@@ -1,3 +1,5 @@
+import 'persona_avatar_config.dart';
+
 class Persona {
   const Persona({
     required this.id,
@@ -7,6 +9,7 @@ class Persona {
     required this.purpose,
     required this.speechStyle,
     required this.createdAt,
+    required this.avatar,
   });
 
   final String id;
@@ -17,12 +20,15 @@ class Persona {
   final String speechStyle;
   final DateTime createdAt;
 
+  final PersonaAvatarConfig avatar;
+
   factory Persona.create({
     required String name,
     required String personality,
     required String moralAlignment,
     required String purpose,
     required String speechStyle,
+    required PersonaAvatarConfig avatar,
   }) {
     final createdAt = DateTime.now();
     return Persona(
@@ -33,6 +39,7 @@ class Persona {
       purpose: purpose,
       speechStyle: speechStyle,
       createdAt: createdAt,
+      avatar: avatar,
     );
   }
 
@@ -45,6 +52,12 @@ class Persona {
       purpose: json['purpose'] as String,
       speechStyle: json['speechStyle'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
+      avatar: json['avatar'] != null
+          ? PersonaAvatarConfig.fromJson(json['avatar'] as Map<String, dynamic>)
+          : PersonaAvatarConfig(
+              seed: json['id'] as String,
+              style: 'notionists',
+            ),
     );
   }
 
@@ -56,6 +69,7 @@ class Persona {
     'purpose': purpose,
     'speechStyle': speechStyle,
     'createdAt': createdAt.toIso8601String(),
+    'avatar': avatar.toJson(),
   };
 }
 

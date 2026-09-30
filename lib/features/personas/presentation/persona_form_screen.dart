@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../models/persona.dart';
+import '../models/persona_avatar_config.dart';
+import 'avatar_editor_screen.dart';
+import '../widgets/persona_avatar.dart';
 
 class PersonaFormScreen extends StatefulWidget {
   const PersonaFormScreen({super.key});
@@ -16,6 +20,18 @@ class _PersonaFormScreenState extends State<PersonaFormScreen> {
   String? _moralAlignment;
   String? _purpose;
   String? _speechStyle;
+
+  late PersonaAvatarConfig _avatarConfig;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _avatarConfig = PersonaAvatarConfig(
+      seed: DateTime.now().microsecondsSinceEpoch.toString(),
+      style: 'notionist',
+    );
+  }
 
   @override
   void dispose() {
@@ -33,6 +49,7 @@ class _PersonaFormScreenState extends State<PersonaFormScreen> {
         moralAlignment: _moralAlignment!,
         purpose: _purpose!,
         speechStyle: _speechStyle!,
+        avatar: _avatarConfig,
       ),
     );
   }
@@ -49,6 +66,25 @@ class _PersonaFormScreenState extends State<PersonaFormScreen> {
             Text(
               'Identity and disposition',
               style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () async {
+                final updatedConfig = await Navigator.of(context)
+                    .push<PersonaAvatarConfig>(
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            AvatarEditorScreen(initialConfig: _avatarConfig),
+                      ),
+                    );
+
+                if (updatedConfig != null) {
+                  setState(() {
+                    _avatarConfig = updatedConfig;
+                  });
+                }
+              },
+              child: PersonaAvatar(config: _avatarConfig, size: 100),
             ),
             const SizedBox(height: 20),
             TextFormField(
@@ -97,6 +133,19 @@ class _PersonaFormScreenState extends State<PersonaFormScreen> {
               options: PersonaOptions.speechStyles,
               value: _speechStyle,
               onChanged: (value) => setState(() => _speechStyle = value),
+            ),
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              key: const ValueKey('edit-avatar'),
+              label: const Text('Edit Avatar'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        AvatarEditorScreen(initialConfig: _avatarConfig),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 24),
             FilledButton.icon(

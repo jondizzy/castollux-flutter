@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/persona_store.dart';
 import '../models/persona.dart';
+import '../widgets/persona_avatar.dart';
 
 class PersonaDetailScreen extends StatelessWidget {
   const PersonaDetailScreen({
@@ -65,6 +66,7 @@ class PersonaDetailScreen extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+          Center(child: PersonaAvatar(config: persona.avatar, size: 120)),
           const SizedBox(height: 12),
           _TraitRow(label: 'Personality', value: persona.personality),
           _TraitRow(label: 'Morality', value: persona.moralAlignment),
