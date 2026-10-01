@@ -41,4 +41,16 @@ class PersonaStore extends ChangeNotifier {
     final records = _personas.map((persona) => persona.toJson()).toList();
     await _preferences.setString(_storageKey, jsonEncode(records));
   }
+
+  Future<void> update(Persona updatedPersona) async {
+    _personas = _personas.map<Persona>((persona) {
+      if (persona.id == updatedPersona.id) {
+        return updatedPersona;
+      }
+      return persona;
+    }).toList();
+
+    await _persist();
+    notifyListeners();
+  }
 }

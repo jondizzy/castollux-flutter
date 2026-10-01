@@ -22,6 +22,28 @@ class Persona {
 
   final PersonaAvatarConfig avatar;
 
+  Persona copyWith({
+    String? id,
+    String? name,
+    String? personality,
+    String? moralAlignment,
+    String? purpose,
+    String? speechStyle,
+    DateTime? createdAt,
+    PersonaAvatarConfig? avatar,
+  }) {
+    return Persona(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      personality: personality ?? this.personality,
+      moralAlignment: moralAlignment ?? this.moralAlignment,
+      purpose: purpose ?? this.purpose,
+      speechStyle: speechStyle ?? this.speechStyle,
+      createdAt: createdAt ?? this.createdAt,
+      avatar: avatar ?? this.avatar,
+    );
+  }
+
   factory Persona.create({
     required String name,
     required String personality,
