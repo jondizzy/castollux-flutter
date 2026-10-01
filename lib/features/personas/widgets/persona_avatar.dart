@@ -23,6 +23,7 @@ class PersonaAvatar extends StatelessWidget {
         lips: [config.lips],
         beard: config.beard != null ? [config.beard!] : null,
         beardProbability: config.beard != null ? 100 : 0,
+        gestureProbability: config.gesture != null ? 100 : 0,
         body: [config.clothesVariant],
         bodyIcon: [config.clothesGraphicVariant],
         glasses: config.glasses != null ? [config.glasses!] : null,
@@ -32,7 +33,10 @@ class PersonaAvatar extends StatelessWidget {
     // dice_bear 1.0.4 validates gesture names against an incorrect enum.
     // Add the API-supported value after its other options are validated.
     final uri = request.uri.replace(
-      queryParameters: {...request.queryParameters, 'gesture': config.gesture},
+      queryParameters: {
+        ...request.queryParameters,
+        if (config.gesture != null) 'gesture': config.gesture!,
+      },
     );
     return SizedBox(
       width: size,
@@ -44,9 +48,8 @@ class PersonaAvatar extends StatelessWidget {
         fit: BoxFit.contain,
         placeholderBuilder: (_) =>
             const Center(child: CircularProgressIndicator()),
-        errorBuilder: (_, error, stackTrace) => const Center(
-          child: Icon(Icons.person_outline),
-        ),
+        errorBuilder: (_, error, stackTrace) =>
+            const Center(child: Icon(Icons.person_outline)),
       ),
     );
   }

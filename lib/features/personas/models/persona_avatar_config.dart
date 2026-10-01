@@ -23,7 +23,7 @@ class PersonaAvatarConfig {
   final String nose;
   final String lips;
   final String? beard;
-  final String gesture;
+  final String? gesture;
   final String clothesVariant;
   final String clothesGraphicVariant;
   final String? glasses;
@@ -52,7 +52,7 @@ class PersonaAvatarConfig {
     String? nose,
     String? lips,
     Object? beard = _unset,
-    String? gesture,
+    Object? gesture = _unset,
     String? clothesVariant,
     String? clothesGraphicVariant,
     Object? glasses = _unset,
@@ -66,7 +66,7 @@ class PersonaAvatarConfig {
       nose: nose ?? this.nose,
       lips: lips ?? this.lips,
       beard: identical(beard, _unset) ? this.beard : beard as String?,
-      gesture: gesture ?? this.gesture,
+      gesture: identical(gesture, _unset) ? this.gesture : gesture as String?,
       clothesVariant: clothesVariant ?? this.clothesVariant,
       clothesGraphicVariant:
           clothesGraphicVariant ?? this.clothesGraphicVariant,
@@ -101,7 +101,9 @@ class PersonaAvatarConfig {
       nose: json['nose'] as String? ?? 'variant01',
       lips: json['lips'] as String? ?? 'variant01',
       beard: json['beard'] as String?,
-      gesture: gestureOptions.contains(json['gesture'])
+      gesture: json.containsKey('gesture') && json['gesture'] == null
+          ? null
+          : gestureOptions.contains(json['gesture'])
           ? json['gesture'] as String
           : 'hand',
       clothesVariant: json['clothesVariant'] as String? ?? 'variant01',

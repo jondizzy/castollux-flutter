@@ -85,7 +85,8 @@ class _AvatarEditorScreenState extends State<AvatarEditorScreen> {
   static final List<String> _glassesOptions = _variants(11);
   static final List<String> _bodyOptions = _variants(25);
   static const List<String> _bodyIconOptions = ['electric', 'galaxy', 'saturn'];
-  static const List<String> _gestureOptions = PersonaAvatarConfig.gestureOptions;
+  static const List<String> _gestureOptions =
+      PersonaAvatarConfig.gestureOptions;
 
   static List<String> _variants(int count) {
     return List.generate(
@@ -198,6 +199,7 @@ class _AvatarEditorScreenState extends State<AvatarEditorScreen> {
 
     final supportsNone =
         _selectedCategory == AvatarCategory.beard ||
+        _selectedCategory == AvatarCategory.gesture ||
         _selectedCategory == AvatarCategory.glasses;
 
     final totalItems = options.length + (supportsNone ? 1 : 0);
@@ -378,6 +380,9 @@ class _AvatarEditorScreenState extends State<AvatarEditorScreen> {
   void _selectNone() {
     setState(() {
       switch (_selectedCategory) {
+        case AvatarCategory.gesture:
+          _config = _config.copyWith(gesture: null);
+          break;
         case AvatarCategory.beard:
           _config = _config.copyWith(beard: null);
           break;
