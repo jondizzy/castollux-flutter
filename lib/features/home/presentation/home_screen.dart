@@ -101,6 +101,7 @@ class _PersonaGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
+        mainAxisExtent: 300,
       ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -137,10 +138,10 @@ class _PersonaCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Spacer(),
-              PersonaAvatar(config: persona.avatar, size: 64),
+              PersonaAvatar(config: persona.avatar, size: 200),
               Text(
                 persona.name,
                 style: Theme.of(context).textTheme.titleMedium,
