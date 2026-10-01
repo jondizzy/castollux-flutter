@@ -8,4 +8,4 @@
 
 ## Structure
 
-[redacted]]
+[redacted]
